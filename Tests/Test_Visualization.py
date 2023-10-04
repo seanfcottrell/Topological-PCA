@@ -3,7 +3,7 @@ import pandas as pd
 import warnings
 import os
 import sys
-from RpLSPCA import RpLSPCA_cal_projections_KNN
+from tPCA import RpLSPCA_cal_projections_KNN
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 from sklearn import manifold
