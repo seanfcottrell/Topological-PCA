@@ -10,6 +10,8 @@ This work builds upon previous improvements to PCA, most notably the PLPCA proce
 
 Included here are several files for different PCA methods that can be used to compare relative clustering, classification, and visualization performances on different datasets (after dimensionality reduction). Included are: PCA, sPCA, and tPCA, as well as NMF, UMAP, and tSNE. 
 
+Paramvals provides parameter values used to recreate published results. 
+
 ## DATASETS: 
 
 Datasets can be obtained from the Single Cell Data Processing repository referenced in the paper.  
