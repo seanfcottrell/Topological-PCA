@@ -60,8 +60,8 @@ def tSNE_KMeans(X,y,k,state = 20):
     for state in range(state):
 
         t_sne = manifold.TSNE(
-        n_components=2,
-        init="pca",
+        n_components=k,
+        init="random",
         n_iter=300,
         random_state=state,
         ) 
