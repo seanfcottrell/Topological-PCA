@@ -5,7 +5,7 @@ import os
 import sys
 from sklearn.neighbors import KNeighborsClassifier
 from RgLSPCA import RgLSPCA_cal_projections
-from RpLSPCA import RpLSPCA_cal_projections_KNN
+from tPCA import RpLSPCA_cal_projections_KNN
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 from sklearn.preprocessing import StandardScaler
