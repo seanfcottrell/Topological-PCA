@@ -54,6 +54,45 @@ def computeKMeans(X, y, max_state = 30):
         LABELS[state, :] = label
     return ARI, NMI
 
+def tSNE_KMeans(X,y,k,state = 20):
+    ARI = []
+    NMI = []
+    for state in range(state):
+
+        t_sne = manifold.TSNE(
+        n_components=2,
+        init="pca",
+        n_iter=300,
+        random_state=state,
+        ) 
+
+        Q = t_sne.fit_transform(X)
+
+        NMF_ari, NMF_nmi = computeKMeans(Q, y, max_state=30)
+        ARI.append((NMF_ari.sum()) / 30)
+        NMI.append((NMF_nmi.sum()) / 30)
+    ARI_score = np.mean(ARI)
+    NMI_score = np.mean(NMI)
+
+    return ARI_score, NMI_score
+
+def computeNMF(X, k, state):
+    myNMF = NMF(n_components=k,  init = 'random', max_iter=300, random_state=state)
+    X_nmf = myNMF.fit_transform(X)
+    return X_nmf
+
+def NMF_KMeans(X, y, k, state = 20):
+    ARI = []
+    NMI = []
+    for state in range(state):
+        Q = computeNMF(X, k, state)
+        NMF_ari, NMF_nmi = computeKMeans(Q, y, max_state=30)
+        ARI.append((NMF_ari.sum()) / 30)
+        NMI.append((NMF_nmi.sum()) / 30)
+    ARI_score = np.mean(ARI)
+    NMI_score = np.mean(NMI)
+    return ARI_score, NMI_score
+
 
 def load_X(data):
     inpath = rootPath + '/tPCA_Workshop/data/%s/'%(data)
