@@ -348,7 +348,7 @@ if __name__ == '__main__':
         f1 = 0
         for per in range(1, 6):
             #Train-Test Split
-            x_train, x_test, y_train, y_test = train_test_split(X_filtered.T, y_filtered.T, test_size=int(round(X_normalized.shape[1]*0.4)), random_state=per)
+            x_train, x_test, y_train, y_test = train_test_split(X_normalized.T, y_filtered.T, test_size=int(round(X_normalized.shape[1]*0.4)), random_state=per)
 
             #Reduced Data Matrix
             Q_train = tSNE(np.asarray(x_train), k)
@@ -387,15 +387,19 @@ if __name__ == '__main__':
         f1 = 0
         for per in range(1, 6):
             #Train-Test Split
-            x_train, x_test, y_train, y_test = train_test_split(X_filtered.T, y_filtered.T, test_size=int(round(X_normalized.shape[1]*0.4)), random_state=per)
+            x_train, x_test, y_train, y_test = train_test_split(X_normalized.T, y_filtered.T, test_size=int(round(X_normalized.shape[1]*0.4)), random_state=per)
 
-            #Reduced Data Matrix
-            Q_train = umap(np.asarray(x_train).T, k)
-            Q_test = umap(np.asarray(x_test).T, k)
+            # Reduction
+            Q_train = umap(x_train, k)
+            Q_train= np.asarray(Q_train)
+
+            Q_test = umap(x_test, k)
+            Q_test = np.asarray(Q_test)
 
             #Classification
             knc.fit(np.real(Q_train), y_train)
             y_predict = knc.predict(np.real(Q_test))
+
         
             #K-Fold Metrics
             accuracy += accuracy_score(y_test, y_predict)
