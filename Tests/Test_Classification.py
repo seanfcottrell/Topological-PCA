@@ -3,7 +3,7 @@ import pandas as pd
 import warnings
 import os
 import sys
-from RpLSPCA import RpLSPCA_cal_projections_KNN
+from tPCA import tPCA_cal_projections_KNN, tPCA_cal_projections
 from RgLSPCA import RgLSPCA_cal_projections
 from sPCA import SPCA_cal_projections
 from PCA import PCA_cal_projections
