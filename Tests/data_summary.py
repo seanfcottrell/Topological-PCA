@@ -11,13 +11,13 @@ sys.path.append(rootPath)
 warnings.filterwarnings("ignore")
 
 def load_X(data):
-    inpath = rootPath + '/tpca_tests/%s/'%(data)
+    inpath = rootPath + '/Tests/%s/'%(data)
     X = pd.read_csv(inpath + '%s_full_X.csv'%(data))
     X = X.values[:, 1:].astype(float)
     return X
 
 def load_y(data):
-    inpath = rootPath + '/tpca_tests/%s/'%(data)
+    inpath = rootPath + '/Tests/%s/'%(data)
     y = pd.read_csv(inpath + '%s_full_labels.csv'%(data))
     y = np.array(list(y['Label'])).astype(int)
     return y
